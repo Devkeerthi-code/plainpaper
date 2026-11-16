@@ -1,0 +1,19 @@
+{
+  "docType": "INSURANCE_POLICY",
+  "scalars": {
+    "insurer": "Sunrise Fictional General Insurance",
+    "planName": "Complete Care Plus",
+    "sumInsured": 1000000,
+    "premiumAnnual": 18900,
+    "initialWaitingDays": 30,
+    "preExistingWaitingMonths": 24,
+    "specificDiseaseWaitingMonths": 24,
+    "copayPercent": null,
+    "roomRentLimit": [null, "no room rent capping"],
+    "cashless": true,
+    "claimIntimationHours": 48,
+    "claimProcess": "helpdesk"
+  },
+  "lists": { "exclusions": 3, "subLimits": 0 },
+  "flags": ["insurance.pre-existing", "insurance.specific-disease"]
+}

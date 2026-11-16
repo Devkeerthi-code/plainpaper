@@ -1,0 +1,19 @@
+{
+  "docType": "INSURANCE_POLICY",
+  "scalars": {
+    "insurer": "Carewell Fictional Health Insurance",
+    "planName": "Family Shield Basic",
+    "sumInsured": 500000,
+    "premiumAnnual": 14500,
+    "initialWaitingDays": 30,
+    "preExistingWaitingMonths": 36,
+    "specificDiseaseWaitingMonths": 24,
+    "copayPercent": 20,
+    "roomRentLimit": "1% of the sum insured",
+    "cashless": true,
+    "claimIntimationHours": 24,
+    "claimProcess": "health card"
+  },
+  "lists": { "exclusions": 4, "subLimits": 2 },
+  "flags": ["insurance.copay", "insurance.room-rent", "insurance.pre-existing", "insurance.specific-disease", "insurance.sub-limits", "insurance.short-intimation"]
+}
