@@ -1,0 +1,26 @@
+{
+  "docType": "RENT_AGREEMENT",
+  "scalars": {
+    "landlord": "K. Sampleowner",
+    "property": "Flat No. 304",
+    "startDate": "1 June 2027",
+    "agreementMonths": 11,
+    "monthlyRent": 18000,
+    "deposit": 108000,
+    "depositRefundDays": 45,
+    "depositNonRefundable": true,
+    "depositDeductions": "damages",
+    "incrementPercent": 10,
+    "incrementEveryMonths": 11,
+    "maintenanceMonthly": 2000,
+    "maintenancePaidBy": "tenant",
+    "minorRepairsBy": "tenant",
+    "majorRepairsBy": "tenant",
+    "lockInMonths": 11,
+    "tenantNoticeMonths": 2,
+    "landlordNoticeMonths": 1,
+    "terminationRules": "rent is not paid"
+  },
+  "lists": {},
+  "flags": ["rent.lock-in", "rent.deposit-size", "rent.non-refundable", "rent.major-repairs", "rent.notice-imbalance", "rent.slow-refund"]
+}

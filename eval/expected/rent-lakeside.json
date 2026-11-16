@@ -1,0 +1,26 @@
+{
+  "docType": "RENT_AGREEMENT",
+  "scalars": {
+    "landlord": "L. Exampleowner",
+    "property": "House No. 12",
+    "startDate": "15 August 2027",
+    "agreementMonths": 11,
+    "monthlyRent": 25000,
+    "deposit": 50000,
+    "depositRefundDays": 7,
+    "depositNonRefundable": [null, false],
+    "depositDeductions": "unpaid bills",
+    "incrementPercent": 5,
+    "incrementEveryMonths": 12,
+    "maintenanceMonthly": null,
+    "maintenancePaidBy": "landlord",
+    "minorRepairsBy": "tenant",
+    "majorRepairsBy": "landlord",
+    "lockInMonths": 3,
+    "tenantNoticeMonths": 1,
+    "landlordNoticeMonths": 1,
+    "terminationRules": "vacant possession"
+  },
+  "lists": {},
+  "flags": []
+}
