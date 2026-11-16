@@ -1,0 +1,122 @@
+/* PlainPaper tokens. Paper and ink by day, a lamp-lit desk by night. Everything reads from these. */
+
+:root {
+  /* colour — light / paper (default) */
+  --paper: #F5F1E8;
+  --paper-sunk: #ECE6D9;
+  --sheet: #FFFDF7;
+  --ink: #1A2233;
+  --ink-2: #465063;
+  --ink-3: #5F6878;
+  --rule: #DCD4C4;
+  --rule-strong: #BDB3A0;
+  --accent: #1F6B57;
+  --accent-hover: #18584A;
+  --on-accent: #FFFFFF;
+  --accent-wash: #CDE7D9;
+  --accent-tint: #E4F0E9;
+  --amber: #8F5A00;
+  --amber-wash: #F6E3BC;
+  --red: #A23B2C;
+  --red-wash: #F4D8D1;
+  --focus: #1F6B57;
+  --toast-accent: #CDE7D9;
+  --toast-error: #F4D8D1;
+  --shadow-sheet: 0 1px 0 rgb(26 34 51 / .04), 0 10px 30px -14px rgb(26 34 51 / .22);
+  --shadow-float: 0 2px 4px rgb(26 34 51 / .06), 0 18px 40px -16px rgb(26 34 51 / .28);
+  --grain-opacity: .35;
+  --grain-blend: multiply;
+
+  /* type */
+  --font-read: var(--nf-newsreader), "Iowan Old Style", Georgia, serif;
+  --font-ui: var(--nf-geist), "Segoe UI", system-ui, sans-serif;
+  --font-deva: var(--nf-deva), var(--font-ui);
+  --font-taml: var(--nf-taml), var(--font-ui);
+  --font-knda: var(--nf-knda), var(--font-ui);
+  --font-telu: var(--nf-telu), var(--font-ui);
+  --font-mlym: var(--nf-mlym), var(--font-ui);
+  --font-beng: var(--nf-beng), var(--font-ui);
+  --fs-12: .75rem;
+  --fs-14: .875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-21: 1.3125rem;
+  --fs-26: 1.625rem;
+  --fs-34: 2.125rem;
+  --fs-display: clamp(2.75rem, 1.6rem + 5.6vw, 6rem);
+
+  /* space (4px base) */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+
+  /* radius: paper is nearly square; controls are softly rounded */
+  --r-paper: 2px;
+  --r-1: 6px;
+  --r-2: 10px;
+  --r-pill: 999px;
+
+  /* motion: everyday interactions stay under 200ms; only the pen pass is slower */
+  --dur-1: 120ms;
+  --dur-2: 180ms;
+  --dur-sweep: 420ms;
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --ease-pen: cubic-bezier(.65, .05, .3, 1);
+
+  /* layout */
+  --top-h: 56px;
+  --docbar-h: 52px;
+  --strip-h: 36px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14161B; --paper-sunk: #0F1115; --sheet: #1C2027;
+    --ink: #ECE6D8; --ink-2: #BDB6A7; --ink-3: #958F83;
+    --rule: #2B3039; --rule-strong: #3D4450;
+    --accent: #7CC4A8; --accent-hover: #93D3BA; --on-accent: #0D1A15;
+    --accent-wash: #7CC4A842; --accent-tint: #7CC4A81F;
+    --amber: #E5B05A; --amber-wash: #E5B05A29; --red: #F0907E; --red-wash: #F0907E29;
+    --focus: #7CC4A8;
+    --toast-accent: #1F6B57; --toast-error: #A23B2C;
+    --shadow-sheet: 0 1px 0 rgb(0 0 0 / .3), 0 12px 32px -14px rgb(0 0 0 / .7);
+    --shadow-float: 0 2px 6px rgb(0 0 0 / .4), 0 20px 44px -16px rgb(0 0 0 / .8);
+    --grain-opacity: .18;
+    --grain-blend: screen;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14161B; --paper-sunk: #0F1115; --sheet: #1C2027;
+  --ink: #ECE6D8; --ink-2: #BDB6A7; --ink-3: #958F83;
+  --rule: #2B3039; --rule-strong: #3D4450;
+  --accent: #7CC4A8; --accent-hover: #93D3BA; --on-accent: #0D1A15;
+  --accent-wash: #7CC4A842; --accent-tint: #7CC4A81F;
+  --amber: #E5B05A; --amber-wash: #E5B05A29; --red: #F0907E; --red-wash: #F0907E29;
+  --focus: #7CC4A8;
+  --toast-accent: #1F6B57; --toast-error: #A23B2C;
+  --shadow-sheet: 0 1px 0 rgb(0 0 0 / .3), 0 12px 32px -14px rgb(0 0 0 / .7);
+  --shadow-float: 0 2px 6px rgb(0 0 0 / .4), 0 20px 44px -16px rgb(0 0 0 / .8);
+  --grain-opacity: .18;
+  --grain-blend: screen;
+  color-scheme: dark;
+}
+
+/* The same tokens as Tailwind theme values, so utilities (bg-paper, text-ink-2, font-read) match. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-sunk: var(--paper-sunk);
+  --color-sheet: var(--sheet);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+  --color-amber: var(--amber);
+  --color-red: var(--red);
+  --font-reading: var(--font-read);
+  --font-interface: var(--font-ui);
+  --radius-paper: var(--r-paper);
+  --radius-1: var(--r-1);
+  --radius-2: var(--r-2);
+}
