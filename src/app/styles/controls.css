@@ -1,0 +1,107 @@
+/* Buttons, inputs, segmented controls, switches, badges, dialog, toasts. */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: 44px; padding: 0 var(--s-5);
+  border-radius: var(--r-1); border: 1px solid transparent;
+  font-weight: 500; font-size: var(--fs-16); text-decoration: none; white-space: nowrap;
+  transition: background-color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+  user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: scale(.97); }
+.btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-quiet { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+.btn-quiet:hover { border-color: var(--ink-2); background: var(--sheet); }
+.btn-ghost { background: transparent; color: var(--ink-2); }
+.btn-ghost:hover { color: var(--ink); background: var(--paper-sunk); }
+.btn-danger { background: var(--red); color: var(--sheet); }
+.btn-danger:hover { filter: brightness(.94); }
+.btn-small { min-height: 36px; padding: 0 var(--s-3); font-size: var(--fs-14); }
+.btn-block { width: 100%; }
+.btn[aria-pressed="true"] { color: var(--accent); background: var(--accent-tint); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+.btn .spin { width: 16px; height: 16px; }
+
+.spin { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid currentColor; border-top-color: transparent; animation: spin .8s linear infinite; flex-shrink: 0; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid transparent; border-radius: var(--r-pill); background: transparent; color: var(--ink-2); transition: background-color var(--dur-1), color var(--dur-1), transform var(--dur-1); }
+.icon-btn:hover { background: var(--paper-sunk); color: var(--ink); }
+.icon-btn:active { transform: scale(.92); }
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+.link { color: var(--accent); font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.link:hover { color: var(--accent-hover); }
+.text-btn { border: 0; background: none; padding: 0; color: var(--accent); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+
+.badge { display: inline-flex; align-items: center; height: 22px; padding: 0 var(--s-2); border-radius: var(--r-1); font-size: var(--fs-12); font-weight: 500; letter-spacing: .02em; white-space: nowrap; }
+.badge-demo { border: 1px dashed var(--rule-strong); color: var(--ink-2); }
+.badge-type { background: var(--paper-sunk); color: var(--ink-2); }
+.badge-amber { background: var(--amber-wash); color: var(--amber); }
+.badge-red { background: var(--red-wash); color: var(--red); }
+.badge-accent { background: var(--accent-tint); color: var(--accent); }
+
+/* fields */
+.field { display: grid; gap: 6px; }
+.field label, .field .label { font-size: var(--fs-14); font-weight: 500; }
+.field input:not([type="checkbox"]):not([type="radio"]), .field select {
+  height: 44px; width: 100%; padding: 0 var(--s-3); border: 1px solid var(--rule-strong); border-radius: var(--r-1);
+  background: var(--sheet); font-variant-numeric: tabular-nums; transition: border-color var(--dur-1);
+}
+.field input:hover, .field select:hover { border-color: var(--ink-3); }
+.field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; border-color: transparent; }
+.field input[aria-invalid="true"] { border-color: var(--red); }
+.field small { font-size: var(--fs-12); color: var(--ink-3); }
+.field .err { font-size: var(--fs-12); color: var(--red); font-weight: 500; }
+.field-money { position: relative; }
+.field-money::before { content: "₹"; position: absolute; left: var(--s-3); top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+.field-money input { padding-left: 28px !important; }
+.check { display: flex; gap: var(--s-2); align-items: flex-start; font-size: var(--fs-14); cursor: pointer; }
+.check input { accent-color: var(--accent); width: 18px; height: 18px; margin: 1px 0 0; flex-shrink: 0; }
+
+/* segmented radio group with a sprung thumb */
+.seg { position: relative; display: inline-flex; padding: 3px; background: var(--paper-sunk); border-radius: var(--r-1); isolation: isolate; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.seg::-webkit-scrollbar { display: none; }
+.seg [role="radio"] { position: relative; z-index: 1; border: 0; background: none; height: 32px; padding: 0 var(--s-3); border-radius: 4px; font-size: var(--fs-14); color: var(--ink-2); line-height: 1; white-space: nowrap; flex-shrink: 0; transition: color var(--dur-1); }
+.seg [role="radio"]:hover { color: var(--ink); }
+.seg [role="radio"][aria-checked="true"] { color: var(--ink); font-weight: 500; }
+.seg [role="radio"]:focus-visible { outline-offset: -2px; }
+.seg-thumb { position: absolute; z-index: 0; top: 3px; bottom: 3px; left: 0; width: 0; background: var(--sheet); border-radius: 4px; box-shadow: 0 1px 2px rgb(0 0 0 / .08), inset 0 0 0 1px var(--rule); will-change: transform, width; pointer-events: none; }
+.seg-lg [role="radio"] { height: 38px; padding: 0 var(--s-4); font-size: var(--fs-16); }
+
+/* switch */
+.switch { display: flex; gap: var(--s-3); align-items: flex-start; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.switch-track { flex-shrink: 0; width: 40px; height: 24px; border-radius: var(--r-pill); background: var(--rule-strong); position: relative; margin-top: 2px; transition: background-color var(--dur-2) var(--ease-out); }
+.switch-thumb { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--sheet); box-shadow: 0 1px 2px rgb(0 0 0 / .25); transition: transform 260ms cubic-bezier(.34, 1.56, .64, 1); }
+.switch input:checked + .switch-track { background: var(--accent); }
+.switch input:checked + .switch-track .switch-thumb { transform: translateX(16px); }
+.switch input:focus-visible + .switch-track { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* dialog */
+.dialog { border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--sheet); color: var(--ink); padding: var(--s-6); width: min(460px, calc(100vw - 32px)); box-shadow: var(--shadow-float); }
+.dialog::backdrop { background: rgb(15 17 21 / .45); }
+.dialog[open] { animation: rise-in var(--dur-2) var(--ease-out); }
+.dialog p { margin-top: var(--s-3); color: var(--ink-2); }
+.dialog .check { margin-top: var(--s-4); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--s-3); margin-top: var(--s-5); flex-wrap: wrap; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(6px); } }
+@keyframes fade-in { from { opacity: 0; } }
+
+/* toasts: invert the page, flick to dismiss */
+.toasts { position: fixed; z-index: 60; left: 50%; bottom: calc(var(--strip-h) + var(--s-4)); transform: translateX(-50%); display: grid; gap: var(--s-2); width: min(440px, calc(100vw - 24px)); pointer-events: none; }
+.toast { pointer-events: auto; display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-3) var(--s-3) var(--s-4); border-radius: var(--r-2); background: var(--ink); color: var(--paper); box-shadow: var(--shadow-float); font-size: var(--fs-14); touch-action: pan-y; will-change: transform, opacity; user-select: none; }
+.toast-icon { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: var(--toast-accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.toast.is-error .toast-icon { stroke: var(--toast-error); }
+.toast-msg { flex: 1; }
+.toast-action { border: 0; background: none; color: var(--toast-accent); font-weight: 600; padding: 6px 8px; border-radius: var(--r-1); font-size: var(--fs-14); white-space: nowrap; }
+.toast-action:hover { background: rgb(127 127 127 / .14); }
+.toast-close { border: 0; background: none; color: inherit; opacity: .7; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; }
+.toast-close:hover { opacity: 1; background: rgb(127 127 127 / .14); }
+.toast-close svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; fill: none; }
+
+/* skeleton shimmer */
+.shimmer { display: block; border-radius: 3px; background: linear-gradient(90deg, var(--rule) 0, color-mix(in srgb, var(--rule) 40%, var(--sheet)) 50%, var(--rule) 100%) 0 0 / 200% 100%; animation: shimmer 1.4s linear infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
