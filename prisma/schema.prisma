@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DocType {
+  OFFER_LETTER
+  RENT_AGREEMENT
+  INSURANCE_POLICY
+}
+
+model User {
+  id           String     @id @default(cuid())
+  email        String     @unique @db.VarChar(254)
+  passwordHash String     @db.VarChar(100)
+  createdAt    DateTime   @default(now())
+  sessions     Session[]
+  analyses     Analysis[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  // SHA-256 of the cookie token, so a DB leak can't be replayed as a login.
+  tokenHash String   @unique @db.Char(64)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Analysis {
+  id           String    @id @default(cuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  docType      DocType
+  title        String    @db.VarChar(160)
+  pageCount    Int
+  /// Extracted text split into clauses. Stored only because the user chose to save.
+  pages        Json
+  fields       Json
+  summary      Json
+  flags        Json
+  translations Json      @default("{}")
+  pinned       Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  /// Null while pinned. The daily cleanup deletes rows past this time.
+  expiresAt    DateTime?
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([pinned, expiresAt])
+}
+
+/// Anonymous counters: no user id, no IP, no document content.
+model UsageEvent {
+  id        BigInt   @id @default(autoincrement())
+  kind      String   @db.VarChar(40)
+  docType   DocType?
+  createdAt DateTime @default(now())
+
+  @@index([kind, createdAt])
+}
+
+/// Fixed-window counters for rate limiting. Keys hold a salted hash, never a raw IP.
+model RateLimit {
+  key         String   @db.VarChar(120)
+  windowStart DateTime
+  count       Int      @default(1)
+
+  @@id([key, windowStart])
+  @@index([windowStart])
+}
