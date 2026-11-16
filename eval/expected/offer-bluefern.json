@@ -1,0 +1,28 @@
+{
+  "docType": "OFFER_LETTER",
+  "scalars": {
+    "employer": "Bluefern Labs",
+    "role": "Associate Software Engineer",
+    "location": "Pune",
+    "joiningDate": "15 July 2027",
+    "ctcAnnual": 950000,
+    "fixedAnnual": 800000,
+    "basicAnnual": 400000,
+    "hraAnnual": 200000,
+    "employerPfAnnual": 48000,
+    "variableAnnual": 100000,
+    "joiningBonus": null,
+    "joiningBonusClawbackMonths": null,
+    "stocks": "stock options",
+    "benefits": "Health insurance",
+    "probationMonths": 3,
+    "noticeDays": 60,
+    "noticeDaysProbation": 15,
+    "bondAmount": null,
+    "bondMonths": null,
+    "nonCompeteMonths": null,
+    "relocation": "reimburse travel"
+  },
+  "lists": {},
+  "flags": ["offer.notice"]
+}

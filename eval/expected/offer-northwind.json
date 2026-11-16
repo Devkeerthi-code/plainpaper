@@ -1,0 +1,28 @@
+{
+  "docType": "OFFER_LETTER",
+  "scalars": {
+    "employer": "Northwind Fictional Technologies",
+    "role": "Graduate Engineer Trainee",
+    "location": "Bengaluru",
+    "joiningDate": "1 July 2027",
+    "ctcAnnual": 800000,
+    "fixedAnnual": 720000,
+    "basicAnnual": 360000,
+    "hraAnnual": 180000,
+    "employerPfAnnual": 21600,
+    "variableAnnual": 80000,
+    "joiningBonus": 50000,
+    "joiningBonusClawbackMonths": 12,
+    "stocks": null,
+    "benefits": "Group Health Insurance",
+    "probationMonths": 6,
+    "noticeDays": 90,
+    "noticeDaysProbation": 30,
+    "bondAmount": 200000,
+    "bondMonths": 24,
+    "nonCompeteMonths": 12,
+    "relocation": "relocation allowance"
+  },
+  "lists": {},
+  "flags": ["offer.bond", "offer.notice", "offer.noncompete", "offer.bonus-clawback"]
+}
