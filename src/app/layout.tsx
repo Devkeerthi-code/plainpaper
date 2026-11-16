@@ -20,17 +20,14 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F5F1E8" },
-    { media: "(prefers-color-scheme: dark)", color: "#14161B" },
-  ],
+  themeColor: "#F5F1E8",
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const [viewer, jar] = await Promise.all([getViewer(), cookies()]);
   const theme = jar.get(THEME_KEY)?.value;
   return (
-    <html lang="en" className={fontVariables} data-theme={isThemeChoice(theme) ? theme : undefined} suppressHydrationWarning>
+    <html lang="en" className={fontVariables} data-theme={isThemeChoice(theme) ? theme : "light"} suppressHydrationWarning>
       <body>
         <ToastProvider>
           <a className="skip" href="#main">

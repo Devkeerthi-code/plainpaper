@@ -115,7 +115,7 @@
     var btn = $('#themeToggle');
     var isDark = function () {
       var t = document.documentElement.dataset.theme;
-      return t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return t === 'dark';
     };
     var sync = function () { btn.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode'); };
     btn.addEventListener('click', function () {

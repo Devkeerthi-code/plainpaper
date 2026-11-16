@@ -7,8 +7,7 @@ export function isThemeChoice(v: unknown): v is ThemeChoice {
 
 export function currentTheme(): ThemeChoice {
   const set = document.documentElement.dataset.theme;
-  if (isThemeChoice(set)) return set;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return isThemeChoice(set) ? set : "light";
 }
 
 /**
@@ -32,6 +31,6 @@ export function restoreSavedTheme(): void {
     const saved = localStorage.getItem(THEME_KEY);
     if (isThemeChoice(saved)) applyTheme(saved);
   } catch {
-    // Storage blocked: follow the system setting.
+    // Storage blocked: stay on the light default.
   }
 }

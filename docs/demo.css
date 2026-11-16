@@ -64,22 +64,7 @@
   color-scheme: light;
 }
 
-/* dark / lamp-lit desk */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #14161B; --paper-sunk: #0F1115; --sheet: #1C2027;
-    --ink: #ECE6D8; --ink-2: #BDB6A7; --ink-3: #958F83;
-    --rule: #2B3039; --rule-strong: #3D4450;
-    --accent: #7CC4A8; --accent-hover: #93D3BA; --on-accent: #0D1A15;
-    --accent-wash: #7CC4A842; --accent-tint: #7CC4A81F;
-    --amber: #E5B05A; --amber-wash: #E5B05A29; --red: #F0907E; --red-wash: #F0907E29;
-    --focus: #7CC4A8;
-    --shadow-sheet: 0 1px 0 rgb(0 0 0 / .3), 0 12px 32px -14px rgb(0 0 0 / .7);
-    --shadow-float: 0 2px 6px rgb(0 0 0 / .4), 0 20px 44px -16px rgb(0 0 0 / .8);
-    --grain-opacity: .18;
-    color-scheme: dark;
-  }
-}
+/* dark / lamp-lit desk: only when chosen with the toggle */
 :root[data-theme="dark"] {
   --paper: #14161B; --paper-sunk: #0F1115; --sheet: #1C2027;
   --ink: #ECE6D8; --ink-2: #BDB6A7; --ink-3: #958F83;
@@ -115,7 +100,6 @@ body::before {
   mix-blend-mode: multiply;
 }
 :root[data-theme="dark"] body::before { mix-blend-mode: screen; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::before { mix-blend-mode: screen; } }
 
 ::selection { background: var(--accent-wash); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
@@ -179,10 +163,6 @@ main:focus { outline: none; }
 .theme-toggle .i-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
-}
 
 .badge { display: inline-flex; align-items: center; height: 22px; padding: 0 var(--s-2); border-radius: var(--r-1); font-size: var(--fs-12); font-weight: 500; letter-spacing: .02em; white-space: nowrap; }
 .badge-demo { border: 1px dashed var(--rule-strong); color: var(--ink-2); }
@@ -585,11 +565,6 @@ main:focus { outline: none; }
 :root[data-theme="dark"] .toast-action { color: #1F6B57; }
 :root[data-theme="dark"] .toast-icon { stroke: #1F6B57; }
 :root[data-theme="dark"] .toast.is-error .toast-icon { stroke: #A23B2C; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .toast-action { color: #1F6B57; }
-  :root:not([data-theme="light"]) .toast-icon { stroke: #1F6B57; }
-  :root:not([data-theme="light"]) .toast.is-error .toast-icon { stroke: #A23B2C; }
-}
 
 /* ---------- dialog ---------- */
 .dialog { border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--sheet); color: var(--ink); padding: var(--s-6); width: min(440px, calc(100vw - 32px)); box-shadow: var(--shadow-float); }
@@ -711,4 +686,3 @@ main:focus { outline: none; }
 .demo-banner { position: relative; z-index: 31; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 8px 16px; background: var(--ink); color: var(--paper); font-size: var(--fs-14); text-align: center; }
 .demo-banner a { color: var(--accent-wash); font-weight: 600; }
 :root[data-theme="dark"] .demo-banner a { color: #1F6B57; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .demo-banner a { color: #1F6B57; } }
